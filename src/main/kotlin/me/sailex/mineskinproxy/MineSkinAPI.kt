@@ -3,6 +3,7 @@ package me.sailex.mineskinproxy
 import com.fasterxml.jackson.core.JacksonException
 import com.google.gson.Gson
 import io.javalin.Javalin
+import io.javalin.http.ContentType
 import org.mineskin.Java11RequestHandler
 import org.mineskin.MineSkinClient
 import org.mineskin.data.CodeAndMessage
@@ -69,7 +70,7 @@ class MineSkinAPI(
             }.join()
 
             if (result != null) {
-                ctx.status(200).result(gson.toJson(result))
+                ctx.status(200).contentType(ContentType.APPLICATION_JSON).result(gson.toJson(result))
                 skinsResolvedCount++
             } else {
                 ctx.status(400).result("No result")
