@@ -54,8 +54,8 @@ class MineSkinAPI(
             }.thenCompose { jobResponse -> jobResponse.getOrLoadSkin(client) }
             .thenApply { skinInfo ->
                 SkinResult(
-                    skinInfo.texture().data().value(),
                     skinInfo.texture().data().signature(),
+                    skinInfo.texture().data().value(),
                     request?.variant ?: Variant.AUTO,
                 )
             }
