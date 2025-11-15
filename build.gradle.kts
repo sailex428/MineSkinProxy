@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "me.sailex"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 application {
     mainClass = "me.sailex.mineskinproxy.MainKt"

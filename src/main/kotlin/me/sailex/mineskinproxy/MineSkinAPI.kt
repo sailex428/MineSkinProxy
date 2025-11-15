@@ -19,6 +19,7 @@ class MineSkinAPI(
 ) {
     private val gson = Gson()
     private val app: Javalin = Javalin.create()
+    private var skinsResolvedCount = 0
 
     init {
         val client: MineSkinClient = MineSkinClient.builder()
@@ -69,9 +70,14 @@ class MineSkinAPI(
 
             if (result != null) {
                 ctx.status(200).result(gson.toJson(result))
+                skinsResolvedCount++
             } else {
                 ctx.status(400).result("No result")
             }
+        }
+
+        app.get("/") {
+            ctx -> ctx.result("hey! resolvedSkins: $skinsResolvedCount")
         }
     }
 }
