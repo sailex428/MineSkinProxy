@@ -1,0 +1,15 @@
+services:
+  mineskinproxy:
+    container_name: mineskinproxy
+    image: eliashahn12/mineskinproxy
+    restart: unless-stopped
+    environment:
+      - API_PORT=22222
+      - MINE_SKIN_API_KEY
+    networks:
+      - main
+
+networks:
+  main:
+    name: main
+    external: true
